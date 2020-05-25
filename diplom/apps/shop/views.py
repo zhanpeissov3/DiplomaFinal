@@ -38,7 +38,7 @@ def send_message(request):
             form.save()
             return HttpResponseRedirect(reverse('shop:product_list'))
         else:
-            return HttpResponse('<h1>Form nicht ausgefüllt</h1>')
+            return HttpResponse('<h1>Форма заполнена непольностью</h1>')
 
 
 def send_service(request):
@@ -48,4 +48,4 @@ def send_service(request):
             form.save()
             return HttpResponseRedirect(reverse('shop:get_services'))
         else:
-            return HttpResponse('<h1>Form nicht ausgefüllt</h1>')
+            return HttpResponse('<h1>Форма заполнена непольностью</h1>')
