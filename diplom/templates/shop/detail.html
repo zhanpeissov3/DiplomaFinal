@@ -1,0 +1,38 @@
+{% extends 'shop/form.html' %}
+{% load staticfiles %}
+{% block title %} {% endblock %}
+
+{% block content %}
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+         <div class="row portfolio-container">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col"></div>
+                <div class="col-md-8" style="background-color:lavender;">
+                    <h2>{{product.name}}</h2>
+                    <p>{{product.description|linebreaks}}</p>
+                    <h2>Цена: {{product.price}} $</h2>
+                    <p>{{product.category.name}}</p>
+                    <p>{{product.created|date:"d.m.Y H:i:s"}}</p>
+                </div>
+                <div class="col-md-4" style="background-color:lavenderblush;">
+                    <div class="portfolio-item">
+                        <img src="{{ product.image.url }}" class="img-fluid" alt="">
+                        <div class="portfolio-info">
+                            <h3><a href="{{ product.image.url }}" data-gall="portfolioGallery" class="venobox" title="ZOOM">
+                                <i class="icofont-plus"></i>Увеличить</a>
+                            </h3>
+                        </div>
+                    </div>
+                    <div align="center">
+                        <button type="button" class="btn btn-outline-success">
+                            <a href="#contact" class="btn-get-started scrollto">Свяжитесь с нами</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+         </div>
+      </div>
+    </section><!-- End Our Portfolio Section -->
+{% endblock %}

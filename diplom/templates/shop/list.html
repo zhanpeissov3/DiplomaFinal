@@ -1,0 +1,85 @@
+{% extends "shop/form.html" %}
+{% load staticfiles %}
+{% load static %}
+{% block hero %}
+      <section id="hero">
+          <div class="hero-container">
+              <h1><b>Добро пожаловать в автосервис Аргымак!</b></h1>
+              <h2><b>Качество проверенное временем</b></h2>
+              <a href="#contact" class="btn-get-started scrollto">Свяжитесь с нами</a>
+          </div>
+      </section><!-- #hero -->
+{% endblock %}
+
+{% block content %}
+    <!-- ======= Our Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+          
+          <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                  <button type="button" class="btn btn-secondary"><a href="{% url 'shop:product_list' %}">Все категории</a></button>
+                </div>
+              {% for c in categories %}
+                <div class="btn-group mr-2" role="group" aria-label="{{c.slug}} group">
+                  <li {% if category.slug == c.slug %}class="selected"{% endif %}>
+                      <button type="button" class="btn btn-secondary"><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></button>
+                  </li>
+                </div>
+              {% endfor %}
+          </div>
+
+        <div class="row portfolio-container">
+
+        <div class="row">
+        {% for product in products %}
+
+        <div class="col-lg-4 col-md-6 filter-{{category.name}}">
+            <h2><a href="{% url 'shop:product_detail' product.id %}">{{product.name}}</a></h2>
+            <h2>Цена: {{product.price}}  </h2>
+            <p>{{product.category.name}}</p>
+            <div align="center">
+                <button type="button" class="btn btn-outline-success">
+                    <a href="#contact" class="btn-get-started scrollto">Свяжитесь с нами</a>
+                </button>
+            </div>
+            <div class="portfolio-item">
+              <img src="{{ product.image.url }}" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                  <h3><a href="{{ product.image.url }}" data-gall="portfolioGallery" class="venobox" title="ZOOM"><i class="icofont-plus">
+                      </i>Увеличить</a></h3>
+              </div>
+            </div>
+        </div>
+        {% endfor %}
+        </div>
+      </div>
+    </section><!-- End Our Portfolio Section -->
+{% endblock %}
+
+{% block about_us %}
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>О автосервисе</h2>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 order-1 order-lg-2">
+            <img src="{% static 'assets/main-7.jpg' %}" class="img-fluid" alt="">
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1">
+            <p>Миссией нашего автосервиса является стремление быть лучшим по качеству обслуживания своих клиентов,
+                степени их удовлетворённости и времени реакции на их потребности.</p>
+              <li> С нами надёжно – мы на рынке города Аксу более 11 лет.</li>
+              <li> С нами выгодно - мы изучаем торговые предложения конкурентов и создаём для Вас более выгодные, как по конечным затратам, так и по уровню автосервиса. </li>
+              <li>С нами интересно – мы лидеры по внедрению новинок в области автосервиса.</li>    
+              <li>С нами Вы можете подчеркнуть свою индивидуальность – мы лидер в области ремонта автомобилей, имеющими собственную большую базу постоянных клиентов.</li>    
+              <li>С нами безопасно – все наши специалисты прошли необходимые курсы обучения и имеют необходимые сертификаты по ремонту автомобилей.</li>  
+
+
+          </div>
+        </div>
+      </div>
+    </section><!-- End About Us Section -->
+{% endblock %}

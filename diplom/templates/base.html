@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="">
+{% load static %}
+{% load staticfiles %}
+<head>
+    <meta http-equiv="Content-Type" content="text/html"; charset="UTF-8">
+    <title>{% block title %} Магазин {% endblock %}</title>
+
+    <!-- Favicons -->
+    <link href="{% static 'assets/img/icon.png' %}" rel="icon">
+    <link href="{% static 'assets/img/portfolio/portfolio-1.jpg' %}" rel="portfolio-1">
+    <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Lato:400,300,700,900" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}">
+    <link type="text/css" href="{% static 'assets/vendor/animate.css/animate.min.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'assets/vendor/icofont/icofont.min.css' %}" rel="stylesheet">
+    <link type="text/css" href="{% static 'assets/vendor/venobox/venobox.css' %}" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link type="text/css" href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+  <div id="like_button_container"></div>
+  <!-- ======= Header ======= -->
+  <header id="header">
+<!--    class="fixed-top"-->
+        <div class="container">
+
+          <div class="logo float-left">
+            <h1 class="text-light"><a href="{% url 'shop:product_list' %}"><span>Автосервис Аргымак</span></a></h1>
+          </div>
+
+          <nav class="nav-menu float-right d-none d-lg-block">
+            <ul>
+              <li class="active"><a href="#header">Главная<i class="la la-angle-down"></i></a></li>
+              <li><a href="#contact">Свяжитесь с нами</a></li>
+              <li {% if not category %} class="selected" {% endif %}>
+                  <a href="{% url 'shop:product_list' %}">Магазин</a>
+              </li>
+              <li><a href="{% url 'shop:get_services' %}">Услуги</a></li>
+            <li><a href="http://localhost:8080/3D%20catalog.html">3D справочник</a></li>
+            </ul>
+          </nav><!-- .nav-menu -->
+
+        </div>
+  </header><!-- End #header -->
+
+  {% block hero %}
+
+  {% endblock %}
+
+  <main id="main">
+    {% block content %}
+
+    {% endblock %}
+
+    {% block about_us %}
+
+    {% endblock %}
+
+    <!-- ======= Contact Us Section ======= -->
+    <section id="contact" class="contact section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Свяжитесь с нами</h2>
+          <p>Для покупки товара или для регистрации на ремонт заполните форму </p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6">
+            <div class="contact-about">
+              <h3>Автосервис Аргымак</h3>
+              <p></p>
+              <div class="social-links">
+                <a href="#" class="facebook"><i class="icofont-facebook"></i></a>
+                <a href="#"><i class="icofont-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6">
+            <div class="info">
+              <div>
+                <i class="icofont-google-map"></i>
+                <p>ул. Карла Маркса 7 <br>Аксу-1, Аксу 140000</p>
+                  <i class="icofont-clock-time"></i>
+                  <p> Режим работы: с 8:00 до 20:00 </p>
+              </div>
+
+              <div>
+                <i class="icofont-envelope"></i>
+                <p>argymak2019@gmail.com</p>
+              </div>
+
+              <div>
+                <i class="icofont-phone"></i>
+                <p>+7 (718)375 56 44 </p>
+              </div>
+            </div>
+          </div>
+          {% block form %}
+
+          {% endblock %}
+        </div>
+      </div>
+    </section><!-- End Contact Us Section -->
+
+    <!-- ======= Map Section ======= -->
+    <section class="map">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2531.91434299249!2d76.85753404580186!3d52.13422491969626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTLCsDA4JzAzLjYiTiA3NsKwNTEnMzUuMCJF!5e1!3m2!1sru!2skz!4v1590321844581!5m2!1sru!2skz" width="600" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </section><!-- End Map Section -->
+  </main><!-- End #main -->
+
+    <!-- ======= Footer ======= -->
+  <footer id="footer">
+    <div class="container">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Автосервис Аргымак</span></strong>. Все права защищены.
+      </div>
+      <div class="credits">
+        Designed by Zhanpeissov Development
+      </div>
+    </div>
+  </footer><!-- End #footer -->
+
+  <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/jquery.easing/jquery.easing.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/venobox/venobox.min.js' %}"></script>
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+</body>
+</html>

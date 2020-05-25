@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% load static %}
+{% block form %}
+          <div class="col-lg-5 col-md-12">
+            <form action="{% url 'shop:send_message' %}" method="post" role="form">
+              {% csrf_token %}
+              {{ form.as_p }}
+              <div class="form-group">
+                <input type="text" name="user_name" class="form-control" id="user_name" placeholder="Ваше имя" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <input type="phone_number" class="form-control" name="phone_number" id="phone_number" placeholder="Номер телефона" data-rule="phone_number" data-msg="Please enter a valid number" />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Тема вопроса" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Текст"></textarea>
+                <div class="validate"></div>
+              </div>
+              <div class="text-center">
+                <button type="submit" class="btn btn-success">Отправить сообщение</button>
+              </div>
+            </form>
+          </div>
+{% endblock %}
